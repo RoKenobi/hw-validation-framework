@@ -1,0 +1,54 @@
+name: CI Validation Pipeline
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y g++ cmake python3 python3-pip
+    
+    - name: Build C++ Core
+      run: |
+        cd cpp_core
+        mkdir build
+        cd build
+        cmake ..
+        make
+    
+    - name: Run C++ Tests Directly
+      run: |
+        cd cpp_core/build
+        ./test_runner --json
+    
+    - name: Install Python Dependencies
+      run: |
+        cd python_orchestrator
+        pip3 install -r requirements.txt
+    
+    - name: Run Python Orchestrator
+      run: |
+        cd python_orchestrator
+        python3 runner.py --all
+    
+    - name: Generate HTML Report
+      run: |
+        cd python_orchestrator
+        python3 reporter.py
+    
+    - name: Upload Test Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-report
+        path: reports/
+        retention-days: 7
