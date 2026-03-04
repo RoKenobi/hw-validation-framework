@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.10)
+project(ValidationCore VERSION 1.0)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+include_directories(${PROJECT_SOURCE_DIR}/include)
+
+add_executable(test_runner
+    src/main.cpp
+    src/MockHardware.cpp
+    src/TestCases.cpp
+)
+
+target_compile_options(test_runner PRIVATE -O2)
