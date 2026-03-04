@@ -1,0 +1,6 @@
+# Python dependencies for Hardware Validation Framework
+# Install with: pip install -r requirements.txt
+
+# No external dependencies required for core functionality
+# Optional: matplotlib for advanced plotting
+# matplotlib>=3.5.0
