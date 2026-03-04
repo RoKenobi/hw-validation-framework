@@ -1,0 +1,35 @@
+# Build directories
+cpp_core/build/
+cpp_core/cmake-build-debug/
+cpp_core/CMakeCache.txt
+cpp_core/CMakeFiles/
+cpp_core/Makefile
+cpp_core/cmake_install.cmake
+
+# Executables
+cpp_core/test_runner
+*.exe
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+
+# Reports (generated)
+reports/report.json
+reports/report.html
+reports/*.log
+*.csv
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
