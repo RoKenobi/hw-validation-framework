@@ -10,6 +10,7 @@ add_executable(test_runner
     src/main.cpp
     src/MockHardware.cpp
     src/TestCases.cpp
+    src/TestSuite.cpp 
 )
 
 target_compile_options(test_runner PRIVATE -O2)
